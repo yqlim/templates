@@ -1,0 +1,53 @@
+{
+  "name": "wallio",
+  "version": "0.1.0",
+  "description": "An app that broadcast messages from users to a screen.",
+  "author": "Yong Quan Lim <yqlim2394@gmail.com>",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
+    "build": "nuxt build",
+    "start": "cross-env NODE_ENV=production node server/index.js",
+    "generate": "nuxt generate",
+    "heroku-postbuild": "npm run build",
+    "push": "git push origin dev",
+    "push:master": "git push origin master",
+    "deploy": "git checkout master && git merge dev --no-ff && git push heroku master && npm run push:master && git checkout dev"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.3.6",
+    "bcrypt": "^3.0.6",
+    "body-check": "^0.4.0",
+    "cookie-parser": "^1.4.4",
+    "cross-env": "^5.2.0",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "express-session": "^1.16.1",
+    "jsonwebtoken": "^8.5.1",
+    "lru-cache": "^5.1.1",
+    "luxon": "^1.16.0",
+    "memorystore": "^1.6.1",
+    "messup": "0.1.0",
+    "nuxt": "^2.6.3",
+    "pg": "^7.10.0",
+    "v-calendar": "^1.0.0-beta.13",
+    "validator": "^11.1.0",
+    "vue-datetime": "^1.0.0-beta.10",
+    "weekstart": "^1.0.0",
+    "zxcvbn": "^4.4.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2"
+  },
+  "engines": {
+    "node": ">= 10.13.0",
+    "npm": ">= 6.4.1"
+  },
+  "browserslist": [
+    "> 0.05%",
+    "last 2 versions",
+    "not ie < 10"
+  ]
+}

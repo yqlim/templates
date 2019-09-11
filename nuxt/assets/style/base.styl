@@ -1,0 +1,85 @@
+desktop = "screen and (min-width: 960px)"
+tablet = "screen and (min-width: 720px) and (max-width: 959px)"
+mobile = "screen and (max-width: 719px)"
+
+tabtop = "screen and (min-width: 720px)"
+moblet = "screen and (max-width: 959px)"
+
+fontFamily = -apple-system, BlinkMacSystemFont, Lato, 'Helvetica Neue', 'Segoe UI', sans-serif
+
+colors = {
+  main: #924acc,
+  black: #454545,
+  grey: #e6e6e6,
+  white: #fff,
+  error: #d93025
+}
+
+colors.lightmain = lighten(colors.main, 25%)
+colors.lightblack = lighten(colors.black, 25%)
+colors.lightgrey = lighten(colors.grey, 25%)
+colors.darkmain = darken(colors.main, 25%)
+colors.darkblack = darken(colors.black, 25%)
+colors.darkgrey = darken(colors.grey, 25%)
+
+
+contrastRatio(c1, c2)
+  LB = luminosity(c1)
+  LF = luminosity(c2)
+  light = max(LB, LF)
+  dark = min(LB, LF)
+  ratio = (light + 0.05)/(dark + 0.05)
+  return ratio
+
+AA(fg, bg)
+  return contrastRatio(bg, fg) >= 4.5
+
+AAA(fg, bg)
+  return contrastRatio(bg, fg) >= 7
+
+props(keys...)
+  return unquote(join(', ', keys))
+
+vals(v...)
+  return unquote(join(' ', v))
+
+
+user-select(val)
+  user-select: val
+  -webkit-touch-callout: val if val == 'none'
+
+flex(items = stretch, content = center, direction = row, wrapping = nowrap)
+  display: flex
+  align-content: center
+  if match('^(flex-start|flex-end|stretch|center|baseline|initial|inherit)(?:\s+\!important)?$', items)
+    align-items: items
+  else
+    error('Flex: Invalid "items" value.')
+  if match('^(flex-start|flex-end|center|space-between|space-around|space-evenly|initial|inherit)(?:\s+\!important)?$', content)
+    justify-content: space-around if content is 'space-evenly'  // Fallback value
+    justify-content: content
+  else
+    error('Flex: Invalid "content" value.')
+  if match('^(row(-reverse)?|column(-reverse)?|initial|inherit)(?:\s+\!important)?$', direction)
+    flex-direction: direction
+  else
+    error('Flex: Invalid "direction" value.')
+  if match('^(nowrap|wrap(-reverse)?|initial|inherit)(?:\s+\!important)?$', wrapping)
+    flex-wrap: wrapping
+  else
+    error('Flex: Invalid "wrap" value.')
+
+transition(props = all, duration = 0.25s, timing = ease, delay = 0s)
+  transition-property: props
+  transition-duration: duration
+  transition-timing-function: timing
+  transition-delay: delay
+
+overflow(x, y = x)
+  overflow-x: x
+  overflow-y: y
+
+margin(top = 0.75em, right = 0, bottom = top, left = right)
+  margin: top right bottom left
+  &:first-child
+    margin-top: 0
