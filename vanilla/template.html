@@ -1,0 +1,40 @@
+<?php
+
+  //require_once 'core/connect.php';
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- GOOGLE ANALYTICS -->
+  <script>
+  </script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta property="fb:app_id" content="<%= htmlWebpackPlugin.options.fb.app_id %>">
+  <meta property="og:title" content="<%= htmlWebpackPlugin.options.og.title %>">
+  <meta property="og:description" content="<%= htmlWebpackPlugin.options.og.description %>">
+  <meta property="og:image" content="<%= htmlWebpackPlugin.options.og.image %>">
+  <meta property="og:type" content="<%= htmlWebpackPlugin.options.og.type %>">
+  <meta property="og:url" content="<%= htmlWebpackPlugin.options.og.url %>">
+  <title><%= htmlWebpackPlugin.options.title %></title>
+  <script src="<%= htmlWebpackPlugin.options.name %>.min.js" defer></script>
+</head>
+<body>
+  <!-- FACEBOOK PIXEL -->
+  <script>
+  </script>
+  <!-- FACEBOOK SDK -->
+  <div id="fb-root"></div>
+  <script>
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.2&appId=378693169560851&autoLogAppEvents=1';
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
+</body>
+</html>
